@@ -1,0 +1,44 @@
+<section class="answers">
+  <div class="container">
+    <div class="answers-pre-title common-title">
+      Результат прохождения теста
+      <img src="assets/images/answers_small_arrow.png" alt="стрелочка">
+      <span id="pre-title">{{ quiz?.name }}</span>
+    </div>
+    <div class="answers-title common-title"><span>Правильные ответы </span>к тесту</div>
+
+    <div class="answers-user-info common-text" id="user-info">
+      Тест выполнил <span> {{ userInfo?.fullName }}, {{ email }}</span>
+    </div>
+
+    <div class="answers-questions" id="answers-questions">
+      @for (quest of quiz?.questions; track $index) {
+
+
+        <div class="question">
+          <div class="common-question-title">
+            <span>Вопрос {{ $index + 1 }}:</span> {{ quest.question }}
+          </div>
+          @for (answer of quest.answers; track answer) {
+            <div class="answers-question" >
+
+              <div class="answer-question" [class]="{false:answer.correct===false, true:answer.correct===true}">
+                <div class="answer-circle"></div>
+                <div>{{ answer.answer }}</div>
+              </div>
+            </div>
+          }
+        </div>
+
+      } <!--            заполняется из скрипта-->
+    </div>
+
+
+    <a class="answers-return" (click)="backClicked()">Обратно к моему результату теста <img
+      src="assets/images/small_arrow.png"
+      alt="Стрелка"></a>
+
+  </div>
+</section>
+
+

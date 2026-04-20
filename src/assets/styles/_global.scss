@@ -1,0 +1,112 @@
+body {
+  margin: 0;
+  font-family: "Museo Sans Cyrl", sans-serif;
+  color: #333;
+  height: 100vh;
+}
+
+app-layout{
+  height: 100%;
+   display:flex;
+  flex-direction:column;
+  justify-content:space-between
+}
+
+a {
+  color: #6933dc;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+
+.button {
+  text-decoration: none;
+  border-radius: 6px;
+  padding: 14px 35px;
+  background: #340893;
+  font-size: 17px;
+  color: #fff;
+  border: 0;
+  transition: .4s;
+  cursor: pointer;
+  &a{
+    display: inline-block;
+  }
+  &:hover {
+    background: #250465FF;
+  }
+  &:disabled {
+    background-color: #e2dfe7;
+    cursor: not-allowed;
+  }
+  &.button-transparent {
+    background: transparent;
+    color: #6933dc;
+    border: 1px solid #6933dc;
+    &:hover {
+      background: #6933dc;
+      color: white;
+    }
+    &:disabled {
+       background: transparent;
+       color: #e2dfe7;
+       border: 1px solid #e2dfe7;
+     }
+  }
+}
+
+//a.button {
+//  display: inline-block;
+//}
+
+//.button:hover {
+//  background: #250465FF;
+//}
+
+//.button:disabled {
+//  background-color: #e2dfe7;
+//  cursor: not-allowed;
+//}
+
+//.button-transparent {
+//  background: transparent;
+//  color: #6933dc;
+//  border: 1px solid #6933dc;
+//}
+
+//.button-transparent:hover {
+//  background: #6933dc;
+//  color: white;
+//}
+
+//.button-transparent:disabled {
+//  background: transparent;
+//  color: #e2dfe7;
+//  border: 1px solid #e2dfe7;
+//}
+
+
+
+.common-question-title {
+  font-family: "Museo Sans Cyrl Bold", sans-serif;
+  font-size: 36px;
+  padding-bottom: 40px;
+  line-height: normal;
+
+  span {
+    color: #6933dc;
+  }
+}
+
+.big-title {
+  font-family: "Museo Sans Cyrl Bold", sans-serif;
+  font-size: 54px;
+  line-height: 65px;
+
+  span {
+    color: #6933dc;
+  }
+}

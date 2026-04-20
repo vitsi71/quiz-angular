@@ -1,0 +1,19 @@
+<section class="result">
+  <div class="container">
+    <div class="result-image">
+      <img src="assets/images/question_marks.png" alt="Знаки вопросов">
+    </div>
+      <div class="result-title big-title"[class.false]="!testResult" >
+      {{ testResult? 'Ура Ты прошел тест!':'Ты не прошёл тест!' }} <span> Твой результат:</span>
+      <!--            заполняется из скрипта-->
+    </div>
+
+    <div class="result-scope" [class.false]="!testResult">
+      {{result}}
+      <!--            заполняется из скрипта-->
+    </div>
+    <a class="result-answers" (click)="answers()" )>Посмотреть правилые ответы<img src="assets/images/small_arrow.png" alt="Стрелка"></a>
+
+  </div>
+</section>
+

@@ -1,0 +1,75 @@
+.choice {
+  padding-top: 180px;
+  padding-bottom: 227px;
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .choice-content {
+      max-width: 583px;
+
+      .choice-description {
+        margin-top: 40px;
+        font-size: 18px;
+      }
+
+      .choice-options {
+        margin-top: 60px;
+        width: 588px;
+
+        .choice-option {
+          font-size: 18px;
+          background: #fff;
+          border: 1px solid #c1bbbb;
+          padding: 26px 70px 26px 40px;
+          position: relative;
+          transition: .2s ease all;
+
+          &:hover {
+            border-left: 5px solid #6933dc;
+            font-family: "Museo Sans Cyrl Bold", sans-serif;
+            color: #6933dc;
+            cursor: pointer;
+
+            .choice-option-arrow {
+              display: block;
+            }
+          }
+
+          .choice-option-arrow {
+            position: absolute;
+            right: 40px;
+            top: 27px;
+            display: none;
+          }
+        }
+
+
+        .choice-option-result {
+          position: absolute;
+          z-index: 2;
+          right: 18px;
+          top: 16px;
+          border: 1px solid #6933dc;
+          padding: 5px;
+          font-size: 12px;
+          line-height: 14px;
+          color: #6933dc;
+          background: white;
+          text-align: center;
+
+          div:first-child {
+            margin-bottom: 3px;
+          }
+        }
+
+      }
+    }
+  }
+}
+
+
+
+

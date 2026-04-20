@@ -1,0 +1,98 @@
+.form {
+  padding-top: 140px;
+  padding-bottom: 123px;
+
+  .container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    .form-content {
+      max-width: 504px;
+
+      .form-details {
+        margin-top: 60px;
+        max-width: 465px;
+
+        .form-agree {
+          margin-top: 15px;
+          font-size: 12px;
+
+          input {
+            top: 2px;
+            position: relative;
+          }
+
+          label {
+            cursor: pointer;
+          }
+        }
+
+        .form-group {
+          border: 1px solid #c1bbbb;
+          background: #fff;
+          padding: 12px 23px 13px;
+          width: 485px;
+          height: 74px;
+          box-sizing: border-box;
+          position: relative;
+          transition: .2s ease all;
+
+          /*focus-within позволяет стилизовать родительский элемент, когда дочерний в фокусе*/
+          &:focus-within {
+            border-left: 5px solid #6933dc;
+          }
+
+          .form-input {
+            border: 0;
+            outline: 0;
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            font-family: "Museo Sans Cyrl Bold", sans-serif;
+            font-size: 18px;
+            color: #6933dc;
+
+            /*  ~ смещение соседнего элемента при фокусе на инпуте*/
+            /*:not(:focus):valid когда без фокуса, но не пустой (валидный, т.к. указано required как обязательное поле для заполнения) */
+            &:focus ~ .form-label,
+            &:not(:focus):valid ~ .form-label,
+            &:-webkit-autofill ~ .form-label {
+              top: 12px;
+            }
+
+            &:valid,
+            &:focus,
+            &:-webkit-autofill{
+              margin-top: 27px;
+              height: auto;
+            }
+          }
+
+          .form-label {
+            position: absolute;
+            left: 23px;
+            top: 26px;
+            font-size: 18px;
+            transition: .2s ease all;
+
+          }
+        }
+      }
+
+
+      .form-button {
+        margin-top: 30px;
+      }
+
+      .form-link {
+        margin-top: 15px;
+        font-size: 12px;
+        line-height: 14px;
+      }
+    }
+  }
+}
+
+
+

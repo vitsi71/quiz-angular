@@ -1,0 +1,104 @@
+.answers {
+  padding: 20px 0;
+  line-height: normal;
+
+  span {
+    color: #6933dc;
+  }
+  .answers-pre-title {
+    font-family: "Museo Sans Cyrl", sans-serif;
+    font-size: 20px;
+    color: #dcdcf3;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin-bottom: 60px;
+  }
+
+  .answers-title {
+    font-size: 54px;
+    &.common-title {
+      font-family: "Museo Sans Cyrl Bold" , sans-serif !important;
+
+      span {
+        color: #6933dc;
+      }
+    }
+  }
+
+  .answers-user-info {
+    font-size: 20px;
+    padding: 10px 0 60px;
+
+    span {
+      color: #6933dc;
+      font-family: "Museo Sans Cyrl Bold", sans-serif;
+    }
+  }
+
+
+  .answers-questions {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+
+
+    .answers-question {
+      font-size: 20px;
+      gap: 20px;
+      display: flex;
+      flex-direction: column;
+
+      .answer-question {
+        gap: 13px;
+        display: flex;
+        align-items: center;
+
+        .answer-circle {
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          box-sizing: border-box;
+          border: 3px solid #6933dc;
+        }
+      }
+    }
+  }
+
+
+  .answer-question.true {
+    color: #5fdc33;
+
+    .answer-circle {
+      border: 6px solid #5fdc33 !important;
+    }
+  }
+
+  .answer-question.false {
+    color: #dc3333;
+
+    .answer-circle {
+      border: 6px solid #dc3333 !important;
+    }
+  }
+
+  .answers-return {
+    margin-top: 60px;
+    justify-content: flex-end;
+    font-size: 17px;
+    color: #6933dc;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    &:hover{
+      cursor: pointer;
+    }
+
+    img {
+      margin-left: 13px;
+    }
+  }
+}
+
+
+
