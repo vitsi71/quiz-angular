@@ -5,8 +5,8 @@
       <div class="choice-description">Чтобы начать тест, выберите одну из предложенных ниже тем.</div>
       <div class="choice-options" id="choice-options">
 
-<!--        @if(refreshList$|async) {-->
-          @for (quiz of quizzes; track quiz.id) {
+
+          @for (quiz of quizzes(); track quiz.id) {
             <div class="choice-option" (click)="chooseQuiz(quiz.id)">
               @if (quiz.result) {
                 <div class="choice-option-result">
@@ -18,7 +18,7 @@
               <div class="choice-option-text">{{ quiz.name }}</div>
             </div>
           }
-<!--        }-->
+
       </div>
     </div>
     <div class="choice-image">

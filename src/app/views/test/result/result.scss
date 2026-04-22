@@ -42,6 +42,9 @@
       color: #6933dc;
       text-decoration: none;
       line-height: 20px;
+      &:hover{
+        cursor: pointer;
+      }
 
       img {
         position: relative;

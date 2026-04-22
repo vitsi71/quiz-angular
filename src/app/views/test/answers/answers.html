@@ -3,7 +3,7 @@
     <div class="answers-pre-title common-title">
       Результат прохождения теста
       <img src="assets/images/answers_small_arrow.png" alt="стрелочка">
-      <span id="pre-title">{{ quiz?.name }}</span>
+      <span id="pre-title">{{ quiz()?.name }}</span>
     </div>
     <div class="answers-title common-title"><span>Правильные ответы </span>к тесту</div>
 
@@ -12,7 +12,7 @@
     </div>
 
     <div class="answers-questions" id="answers-questions">
-      @for (quest of quiz?.questions; track $index) {
+      @for (quest of quiz()?.questions; track $index) {
 
 
         <div class="question">

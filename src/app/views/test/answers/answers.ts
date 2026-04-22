@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit, signal, WritableSignal} from '@angular/core';
 import {Location} from '@angular/common';
 import {QuizType, ResultQuizType} from '../../../../types/quiz.type';
 import {UserInfoType} from '../../../../types/user-info.type';
@@ -15,12 +15,12 @@ import {ActivatedRoute} from '@angular/router';
 export class Answers implements OnInit {
 
   email: string | null = null;
-  quiz: QuizType | null = null;
+  quiz:WritableSignal<QuizType | null> =signal<QuizType | null>  (null);
   userInfo: UserInfoType | null = null;
 
 
   constructor(private activatedRoute: ActivatedRoute,private _location: Location, private authService: AuthService,
-              private cd:ChangeDetectorRef,private testService: TestService) {
+             private testService: TestService) {
   }
 
   backClicked() {
@@ -39,10 +39,8 @@ export class Answers implements OnInit {
 
             if (result) {
               console.log(result);
-              this.quiz = result.test;
+              this.quiz.set(result.test) ;
             }
-            /////////////////////////////Принудительное обновление страницы///////////////////////
-            this.cd.markForCheck();
           })
       }
     })
