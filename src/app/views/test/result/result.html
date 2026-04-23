@@ -9,7 +9,7 @@
     </div>
 
     <div class="result-scope" [class.false]="!testResult()">
-      {{result}}
+      {{result()}}
       <!--            заполняется из скрипта-->
     </div>
     <a class="result-answers" (click)="answers()">Посмотреть правилые ответы<img src="assets/images/small_arrow.png" alt="Стрелка"></a>

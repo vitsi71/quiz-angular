@@ -1,4 +1,4 @@
-import { Component, OnInit, signal, WritableSignal} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit, signal, WritableSignal} from '@angular/core';
 import {TestService} from '../../../shared/services/test-service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AuthService} from '../../../core/auth/auth-service';
@@ -13,10 +13,10 @@ import {PassTestResponseType} from '../../../../types/pass-test-response.type';
 })
 export class Result implements OnInit {
   constructor(private activatedRoute: ActivatedRoute, private authService: AuthService,
-     private testService: TestService,private router:Router) {
+     private testService: TestService,private router:Router, private cd:ChangeDetectorRef) {
   }
 
-  result: string = '';
+  result:WritableSignal<string>=signal<string>('');
   testResult:WritableSignal<boolean>=signal<boolean>(false);
   testId:number|string = '';
 
@@ -37,7 +37,7 @@ export class Result implements OnInit {
                 }
                 const score: number = (result as PassTestResponseType).score;
                 const total: number = (result as PassTestResponseType).total;
-                this.result = `${score}/${total}`;
+                this.result.set(`${score}/${total}`) ;
                   this.testResult.set(score / total >= 0.8);
                 }
               /////////////////////////////Принудительное обновление страницы///////////////////////

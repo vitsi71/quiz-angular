@@ -2,11 +2,11 @@
   @if (quiz()) {
     <div class="container">
       <div class="test-pre-title common-title" id="pre-title">
-        {{ quiz().name }}
+        {{ quiz()!.name }}
       </div>
       <div class="test-progress-bar" id="progress-bar">
 
-        @for (item of quiz().questions; track $index) {
+        @for (item of quiz()!.questions; track $index) {
 
           <div class="test-progress-bar-item" [class.active]="currentQuestionIndex === $index + 1 "
                [class.complete]="currentQuestionIndex > $index + 1 ">
@@ -44,12 +44,12 @@
         </div>
         <div class="test-next-action">
           <button class="button button-transparent" [disabled]="!chosenAnswerId" (click)="move(actionTestType.next)">
-            {{ currentQuestionIndex === quiz().questions.length ? 'Завершить' : 'Далее' }}
+            {{ currentQuestionIndex === quiz()!.questions.length ? 'Завершить' : 'Далее' }}
           </button>
         </div>
       </div>
       <div class="test-pass-question">
-        <a href="javascript:void (0)" id="pass" (click)="move(actionTestType.pass)">Пропустить вопрос <img
+        <a  class="pass" (click)="move(actionTestType.pass)">Пропустить вопрос <img
           src="assets/images/small_arrow.png"
           alt="Стрелка"></a>
       </div>

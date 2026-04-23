@@ -1,7 +1,7 @@
-import { Component, OnInit, signal, WritableSignal} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit, signal, WritableSignal} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {TestService} from '../../../shared/services/test-service';
-import {QuizType} from '../../../../types/quiz.type';
+import { QuizType} from '../../../../types/quiz.type';
 import {DefaultResponseType} from '../../../../types/default-response.type';
 import {FormsModule} from '@angular/forms';
 import {ActionTestType} from '../../../../types/action-test.type';
@@ -18,7 +18,7 @@ import {AuthService} from '../../../core/auth/auth-service';
 })
 export class Test implements OnInit {
 
-  quiz!:WritableSignal<QuizType> ;
+  quiz:WritableSignal<QuizType|null>=signal<QuizType|null>(null) ;
   timerSeconds:WritableSignal<number>=signal<number>( 59);
   private interval: number = 0;
   currentQuestionIndex: number = 1;
@@ -27,7 +27,7 @@ export class Test implements OnInit {
   actionTestType: typeof ActionTestType = ActionTestType;
 
   constructor(private activatedRoute: ActivatedRoute, private testService: TestService,
-              private authService: AuthService, private router:Router) {
+              private authService: AuthService, private router:Router, private cd:ChangeDetectorRef) {
   }
 
 /////////////////////////////////////
@@ -43,7 +43,8 @@ export class Test implements OnInit {
               }
               // так же делаем утверждение типа для выбранного результата
 
-              this.quiz.set( result as QuizType);
+              // this.quiz=result as QuizType;
+              this.quiz.set(result as QuizType);
               this.startQuiz();
               /////////////////////////////Принудительное обновление страницы///////////////////////
               // this.cd.markForCheck();
@@ -55,13 +56,13 @@ export class Test implements OnInit {
 
 //////////////////////////////////
   get activeQuestion() {
-    return this.quiz().questions[this.currentQuestionIndex - 1];
+        return this.quiz()!.questions[this.currentQuestionIndex - 1];
   }
 
 ///////////////////////////////////
   startQuiz(): void {
     this.interval = window.setInterval(() => {
-      this.timerSeconds.set(this.timerSeconds() - 1)  ;
+      this.timerSeconds.update((timer:number)=> timer -1)  ;
       if (this.timerSeconds() === 0) {
         clearInterval(this.interval);
         this.complete();
@@ -75,13 +76,13 @@ export class Test implements OnInit {
     console.log(this.userResult);
     const userInfo = this.authService.getUserInfo();
     if (userInfo) {
-      this.testService.passQuiz(this.quiz().id,userInfo.userId, this.userResult)
+      this.testService.passQuiz(this.quiz()!.id, userInfo.userId, this.userResult)
         .subscribe(result =>{
           if (result) {
             if ((result as DefaultResponseType).error) {
               throw new Error((result as DefaultResponseType).message);
             }
-            this.router.navigate(['result'],{queryParams:{id:this.quiz().id}}) ;
+            this.router.navigate(['result'],{queryParams:{id:this.quiz()!.id}}) ;
           }
         })
     }
@@ -106,7 +107,7 @@ export class Test implements OnInit {
     }
 
     if (action === ActionTestType.next || action === ActionTestType.pass) {
-      if (this.currentQuestionIndex === this.quiz().questions.length) {
+      if (this.currentQuestionIndex === this.quiz()!.questions.length) {
         clearInterval(this.interval);
         this.complete();
         return;
